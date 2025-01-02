@@ -24,11 +24,11 @@ public class ProductService implements IProductService {
 
     @Override
     public Optional<Product> findById(Long id) {
-        return Optional.empty();
+        return productRepository.findById(id);
     }
 
     @Override
     public void remove(Long id) {
-
+        productRepository.deleteById(id);
     }
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{/layout :: head}">
-    <title>AddNew</title>
+    <title>Update</title>
 </head>
 <body>
-<h2>Add Product</h2>
+<h2>Update Product Information</h2>
 
 <p>
     <a th:href="@{/products}">
@@ -13,7 +13,8 @@
 </p>
 
 <div id="form">
-    <form th:action="@{/products/create}" th:object="${product}" method="POST" >
+    <form th:action="@{/products/update}" th:object="${product}" method="POST" >
+        <input type="hidden" th:field="*{id}"/>
         <table>
             <tr>
                 <td><label for="name">Name: </label></td>
@@ -33,7 +34,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Add New"/></td>
+                <td><input type="submit" value="Update"/></td>
             </tr>
         </table>
     </form>
