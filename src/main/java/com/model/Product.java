@@ -15,4 +15,5 @@ public class Product {
     String description;
     String manufacturer;
     double price;
+    boolean disabled;
 }

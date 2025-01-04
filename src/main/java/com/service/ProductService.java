@@ -14,11 +14,12 @@ public class ProductService implements IProductService {
 
     @Override
     public Iterable<Product> findAll() {
-        return productRepository.findAll();
+        return productRepository.findAllByDisabledEquals(false);
     }
 
     @Override
     public Product save(Product product) {
+        product.setDisabled(false);
         return productRepository.save(product);
     }
 
@@ -29,6 +30,11 @@ public class ProductService implements IProductService {
 
     @Override
     public void remove(Long id) {
-        productRepository.deleteById(id);
+//        productRepository.deleteById(id);
+        Product product = productRepository.findById(id).orElse(null);
+        if (product != null) {
+            product.setDisabled(true);
+            productRepository.save(product);
+        }
     }
 }
